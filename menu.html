@@ -3,44 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Pricing | Vector Baseball</title>
     <link rel="stylesheet" href="mystyle.css">
-    <title>Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-        <div>
-            <h1>Lorem.!</h1>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-brand">VECTOR BASEBALL</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html" class="active">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
         </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="togo.html">To go</a>
-        </nav>
-    </header>
+    </nav>
 
-    <main class="container">
-        <h2>Menu Prices</h2>
+    <div class="container">
+        <header class="menu-header">
+            <h1>Tactical Service Menu</h1>
+            <p>High-performance packages designed for precision development.</p>
+        </header>
 
-        <table class="menu-table">
+        <table class="data-table">
             <thead>
                 <tr>
-                    <th>Header 1</th>
-                    <th>Header 2</th>
+                    <th>Discipline</th>
+                    <th>Service</th>
+                    <th>Analytical Intent</th>
+                    <th class="text-right">Rate</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>data 1</td>
-                    <td>data 2</td>
+                    <td class="cat-tag">Pitching</td>
+                    <td class="service-name">Bio-Mechanical Recon</td>
+                    <td>Sensor-based sequence analysis to identify energy leaks.</td>
+                    <td class="price">$125</td>
                 </tr>
                 <tr>
-                    <td class="error">data 3</td>
-                    <td>data 4</td>
+                    <td class="cat-tag">Pitching</td>
+                    <td class="service-name">Arsenal Calibration</td>
+                    <td>Rapsodo pitch design to optimize spin and movement.</td>
+                    <td class="price">$95</td>
                 </tr>
-
+                <tr>
+                    <td class="cat-tag">Batting</td>
+                    <td class="service-name">Vector Blast Profile</td>
+                    <td>Metric swing audit: Attack Angle and Time-to-Contact.</td>
+                    <td class="price">$85</td>
+                </tr>
+                <tr>
+                    <td class="cat-tag">Analytics</td>
+                    <td class="service-name">The "Intel" Brief</td>
+                    <td>Full statistical report for scout and college evaluation.</td>
+                    <td class="price">$150</td>
+                </tr>
+                <tr>
+                    <td class="cat-tag">Strength</td>
+                    <td class="service-name">Tactical Athlete S&C</td>
+                    <td>Discipline-based functional strength and mobility.</td>
+                    <td class="price">$75</td>
+                </tr>
             </tbody>
         </table>
 
-    </main>
+        <div class="cta-box">
+            <p>All sessions include a Digital After-Action Report (AAR).</p>
+            <a href="#" class="btn-primary">Book Assessment</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Vector Baseball Training & Analytics | DFW, TX</p>
+    </footer>
+
 </body>
 </html>

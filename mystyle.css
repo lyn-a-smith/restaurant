@@ -1,40 +1,120 @@
-/*Global*/
-
-body {
-    background-color: beige;
-    font-family: arial;
-}
-a {
-    text-decoration: none;
-    color: black;
-}
-
-/*Utilities*/
-
-.container {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+:root {
+    --navy-dark: #0d1626;
+    --navy-mid: #1a2b45;
+    --vector-red: #e31b23;
+    --silver: #e1e1e1;
+    --text-white: #f8f9fa;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
 }
 
-/*men.html*/
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
-.menu-table,
-th,
-td {
-    border: 1px solid black;
-    border-collapse: collapse;
+body { 
+    background: radial-gradient(circle at top, var(--navy-mid) 0%, var(--navy-dark) 100%);
+    color: var(--text-white);
+    min-height: 100vh;
 }
-.menu-table th {
-    width: 200px;
-    height: 30px;
-    background-color: black;
-    color: white;
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Navigation */
+.navbar { 
+    background: rgba(13, 22, 38, 0.95); padding: 20px 0; position: sticky; top: 0; 
+    z-index: 100; border-bottom: 1px solid var(--border); backdrop-filter: blur(10px);
 }
-.menu-table td {
-    padding: 10px;
-    text-align: center;
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.nav-brand { font-weight: 900; letter-spacing: 2px; color: var(--vector-red); text-decoration: none; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--silver); font-size: 0.8rem; text-transform: uppercase; font-weight: 700; }
+.nav-links a.active { color: var(--vector-red); }
+
+/* Hero */
+.hero, .menu-header { padding: 100px 0 60px; text-align: center; }
+.hero-logo { max-width: 350px; margin-bottom: 30px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+h1 { font-size: 3.5rem; line-height: 1; text-transform: uppercase; font-weight: 900; }
+.highlight { color: var(--vector-red); }
+.hero-btns { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
+
+/* Mission (60/40 Split) */
+.mission-section { padding: 100px 0; background: rgba(0,0,0,0.2); }
+.mission-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: center; }
+.mission-text h2 { color: var(--vector-red); font-size: 2.5rem; margin-bottom: 20px; text-transform: uppercase; }
+.stat-card { background: var(--navy-dark); padding: 40px; border-left: 5px solid var(--vector-red); margin-bottom: 20px; }
+.stat-card h3 { font-size: 3rem; color: var(--vector-red); }
+
+/* Pillars (4-Column Row) */
+.pillars-section { padding: 100px 0; }
+.section-title { text-align: center; margin-bottom: 50px; text-transform: uppercase; font-size: 2rem; }
+.services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.service-card { background: var(--glass); padding: 40px 20px; border-radius: 4px; border: 1px solid var(--border); text-align: center; transition: 0.3s; }
+.service-card:hover { transform: translateY(-10px); border-color: var(--vector-red); }
+.service-card .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+
+/* Data Table */
+.data-table { width: 100%; border-collapse: separate; border-spacing: 0 10px; margin: 40px 0; }
+.data-table thead th { padding: 15px 25px; color: var(--vector-red); text-transform: uppercase; font-size: 0.7rem; text-align: left; }
+.data-table tbody tr { background: var(--glass); transition: 0.3s; }
+.data-table tbody tr:hover { transform: translateX(10px); background: rgba(255,255,255,0.08); }
+.data-table td { padding: 20px 25px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.data-table td:first-child { border-radius: 5px 0 0 5px; border-left: 1px solid var(--border); }
+.data-table td:last-child { border-radius: 0 5px 5px 0; border-right: 1px solid var(--border); }
+
+thead th {
+    /* Typography */
+    font-size: 1.1rem;          /* Makes text larger */
+    font-weight: 800;           /* Extra bold for tactical feel */
+    text-transform: uppercase;  /* Consistent with branding */
+    letter-spacing: 1.5px;      /* Better readability for headers */
+    
+    /* Alignment & Spacing */
+    text-align: left;           /* Aligns with the content below */
+    padding: 15px 20px;         /* Adds breathing room */
+    
+    /* Optional: Visual separation */
+    border-bottom: 2px solid var(--vector-red); /* Adds a thematic red accent line */
+    color: #ffffff;
 }
-.error {
-    background-color: rgb(211, 137, 137);
+
+/* Specific alignment for the Rate column if desired */
+thead th:last-child {
+    text-align: right;
+}
+
+/* Adjusted CTA Box to prevent overlapping */
+.cta-box { 
+    text-align: center; 
+    padding: 60px 20px; /* Increased vertical padding */
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    
+    /* Flexbox ensures elements stay separated */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px; /* This creates a forced 25px gap between the text and the button */
+}
+
+.cta-box p {
+    font-size: 1.1rem;
+    color: var(--silver);
+    max-width: 500px; /* Prevents text from stretching too wide */
+    line-height: 1.4;
+}
+.price { font-weight: 900; color: var(--vector-red); font-size: 1.3rem; text-align: right; }
+
+/* Buttons & Footer */
+.btn-primary { background: var(--vector-red); color: white; padding: 15px 30px; text-decoration: none; font-weight: 800; text-transform: uppercase; border-radius: 2px; }
+.btn-secondary { border: 2px solid var(--silver); color: var(--silver); padding: 13px 28px; text-decoration: none; font-weight: 800; text-transform: uppercase; border-radius: 2px; }
+.cta-box { text-align: center; padding: 40px; border-top: 1px solid var(--border); }
+footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); opacity: 0.5; font-size: 0.8rem; }
+
+/* Responsive */
+@media (max-width: 1024px) { 
+    .services-grid { grid-template-columns: repeat(2, 1fr); } 
+    .mission-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) { 
+    .services-grid { grid-template-columns: 1fr; } 
+    h1 { font-size: 2.2rem; }
 }
