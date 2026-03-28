@@ -52,31 +52,57 @@ h1 { font-size: 3.5rem; line-height: 1; text-transform: uppercase; font-weight: 
 .service-card .icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
 
 /* Data Table */
-.data-table { width: 100%; border-collapse: separate; border-spacing: 0 10px; margin: 40px 0; }
-.data-table thead th { padding: 15px 25px; color: var(--vector-red); text-transform: uppercase; font-size: 0.7rem; text-align: left; }
-.data-table tbody tr { background: var(--glass); transition: 0.3s; }
-.data-table tbody tr:hover { transform: translateX(10px); background: rgba(255,255,255,0.08); }
-.data-table td { padding: 20px 25px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.data-table td:first-child { border-radius: 5px 0 0 5px; border-left: 1px solid var(--border); }
-.data-table td:last-child { border-radius: 0 5px 5px 0; border-right: 1px solid var(--border); }
+.data-table { 
+    width: 100%; 
+    border-collapse: separate; 
+    border-spacing: 0 10px; 
+    margin: 40px 0; 
+}
+.data-table thead th { 
+    padding: 15px 25px; 
+    color: var(--vector-red); 
+    text-transform: uppercase; 
+    font-size: 0.7rem; 
+    text-align: left; 
+}
+.data-table tbody tr { 
+    background: var(--glass); 
+    transition: 0.3s; 
+}
+.data-table tbody tr:hover { 
+    transform: translateX(10px); 
+    background: rgba(255,255,255,0.08); 
+}
+.data-table td 
+{ padding: 20px 25px; 
+    border-top: 1px solid var(--border); 
+    border-bottom: 1px solid var(--border); 
+}
+.data-table td:first-child { 
+    border-radius: 5px 0 0 5px; 
+    border-left: 1px solid var(--border); 
+}
+.data-table td:last-child { 
+    border-radius: 0 5px 5px 0; 
+    border-right: 1px solid var(--border); 
+}
 
 thead th {
     /* Typography */
     font-size: 1.1rem;          /* Makes text larger */
-    font-weight: 800;           /* Extra bold for tactical feel */
+    font-weight: 800;           
     text-transform: uppercase;  /* Consistent with branding */
-    letter-spacing: 1.5px;      /* Better readability for headers */
+    letter-spacing: 1.5px;      
     
     /* Alignment & Spacing */
     text-align: left;           /* Aligns with the content below */
     padding: 15px 20px;         /* Adds breathing room */
     
-    /* Optional: Visual separation */
-    border-bottom: 2px solid var(--vector-red); /* Adds a thematic red accent line */
-    color: #ffffff;
+    
+    border-bottom: 2px solid var(--vector-red); /* Adds a red accent line */
 }
 
-/* Specific alignment for the Rate column if desired */
+/* Specific alignment for the Rate column */
 thead th:last-child {
     text-align: right;
 }
@@ -109,12 +135,3 @@ thead th:last-child {
 .cta-box { text-align: center; padding: 40px; border-top: 1px solid var(--border); }
 footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); opacity: 0.5; font-size: 0.8rem; }
 
-/* Responsive */
-@media (max-width: 1024px) { 
-    .services-grid { grid-template-columns: repeat(2, 1fr); } 
-    .mission-grid { grid-template-columns: 1fr; }
-}
-@media (max-width: 600px) { 
-    .services-grid { grid-template-columns: 1fr; } 
-    h1 { font-size: 2.2rem; }
-}
