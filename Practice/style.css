@@ -1,0 +1,29 @@
+/* flexbox practice*/
+
+.flex-sample {
+    display: flex;
+    background-color: #dedede;
+    height: 600px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.children {
+    height: 50px;
+    padding: 30px;
+    margin: 10px;
+    text-align: center;
+    background-color: rgb(1, 113, 123);
+}
+.grid-sample {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px
+}
+.item {
+    background-color: grey;
+    padding: 20px;
+    margin: 3px;
+    text-align: center;
+}
+

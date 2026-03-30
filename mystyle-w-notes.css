@@ -1,76 +1,59 @@
+/* ==========================================================================
+   TACTICAL COMMAND CENTER (VARIABLES)
+   These variables allow you to change the entire site's theme in one place.
+   ========================================================================== */
 :root {
-    --navy-dark: #0d1626;
-    --navy-mid: #1a2b45;
-    --vector-red: #e31b23;
-    --silver: #e1e1e1;
-    --text-white: #f8f9fa;
-    --glass: rgba(255, 255, 255, 0.05);
-    --border: rgba(255, 255, 255, 0.1);
+    --navy-dark: #0d1626;      /* Deep background color */
+    --navy-mid: #1a2b45;       /* Lighter navy for gradients */
+    --vector-red: #e31b23;     /* Primary brand/accent color */
+    --silver: #e1e1e1;         /* Secondary text/border color */
+    --text-white: #f8f9fa;     /* High-contrast text */
+    --glass: rgba(255, 255, 255, 0.05); /* Semi-transparent white for cards */
+    --border: rgba(255, 255, 255, 0.1); /* Subtle border for glass elements */
 }
 
-/* 1. Global Reset & Foundations */
+/* ==========================================================================
+   STANDARD OPERATING PROCEDURES (GLOBAL RESET)
+   Ensures the site looks consistent across different web browsers.
+   ========================================================================== */
 * { 
     margin: 0; 
     padding: 0; 
+    /* border-box ensures padding/borders don't increase the element's width */
     box-sizing: border-box; 
     font-family: 'Inter', sans-serif; 
 }
-html {
-    scroll-behavior: smooth;
-}
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--vector-red);
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px; /* Matches your tactical theme */
-    font-size: 1.5rem;
-    font-weight: 900;
-    z-index: 1000; /* Ensures it stays on top of all images/tables */
-    transition: var(--transition); /* Uses your existing transition timing */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-.back-to-top:hover {
-    background-color: #b3141a; /* Darker red on hover */
-    transform: translateY(-5px); /* Subtle "lift" effect */
-    box-shadow: 0 8px 20px rgba(227, 27, 35, 0.4);
-}
 
 body { 
+    /* Creates a subtle depth by making the top of the screen slightly lighter */
     background: radial-gradient(circle at top, var(--navy-mid) 0%, var(--navy-dark) 100%);
     color: var(--text-white);
-    min-height: 100vh;
+    min-height: 100vh; /* Ensures background covers the full screen height */
 }
 
+/* Centers content and prevents it from stretching too wide on large monitors */
 .container { 
     max-width: 1200px; 
     margin: 0 auto; 
     padding: 0 20px; 
 }
 
-/* 2. Navigation */
+/* ==========================================================================
+   NAVIGATION BAR
+   ========================================================================== */
 .navbar { 
     background: var(--navy-dark); 
     padding: 20px 0; 
-    position: sticky; 
+    position: sticky; /* Keeps the menu locked at the top during scroll */
     top: 0; 
-    z-index: 100; 
+    z-index: 100; /* Ensures the nav stays on top of all other elements */
     border-bottom: 1px solid var(--border); 
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /* Creates the "frosted glass" effect */
 }
 
 .nav-container { 
     display: flex; 
-    justify-content: space-between; 
+    justify-content: space-between; /* Brand on left, links on right */
     align-items: center; 
 }
 
@@ -84,7 +67,7 @@ body {
 .nav-links { 
     display: flex; 
     list-style: none; 
-    gap: 30px; 
+    gap: 30px; /* Uniform spacing between menu items */
 }
 
 .nav-links a { 
@@ -96,10 +79,12 @@ body {
 }
 
 .nav-links a.active { 
-    color: var(--vector-red); 
+    color: var(--vector-red); /* Highlights the current page */
 }
 
-/* 3. Hero & Headers */
+/* ==========================================================================
+   HERO SECTION & HEADERS
+   ========================================================================== */
 .hero, .menu-header { 
     padding: 50px 0 60px; 
     text-align: center; 
@@ -108,6 +93,7 @@ body {
 .hero-logo { 
     max-width: 350px; 
     margin-bottom: 30px; 
+    /* Adds a soft shadow behind the logo for a 3D effect */
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); 
 }
 
@@ -129,14 +115,17 @@ h1 {
     margin-top: 40px; 
 }
 
-/* 4. Layout Sections (index.html) */
+/* ==========================================================================
+   MISSION SECTION (THE 60/40 SPLIT)
+   ========================================================================== */
 .mission-section { 
     padding: 40px 0; 
-    background: rgba(0,0,0,0.2); 
+    background: rgba(0,0,0,0.2); /* Darkens section slightly for contrast */
 }
 
 .mission-grid { 
     display: grid; 
+    /* 1.4fr 1fr makes the text column 40% wider than the stats column */
     grid-template-columns: 1.4fr 1fr; 
     gap: 80px; 
     align-items: center; 
@@ -149,13 +138,10 @@ h1 {
     text-transform: uppercase; 
 }
 
-.mission-text p {
-    padding-bottom: 8px;
-}
 .stat-card { 
     background: var(--navy-dark); 
     padding: 40px; 
-    border-left: 5px solid var(--vector-red); 
+    border-left: 5px solid var(--vector-red); /* Distinctive red accent bar */
     margin-bottom: 20px; 
 }
 
@@ -164,7 +150,9 @@ h1 {
     color: var(--vector-red); 
 }
 
-/* Pillars Section */
+/* ==========================================================================
+   PILLARS / SERVICES GRID (4 COLUMNS)
+   ========================================================================== */
 .pillars-section { 
     padding: 60px 0; 
 }
@@ -178,6 +166,7 @@ h1 {
 
 .services-grid { 
     display: grid; 
+    /* Creates 4 equal columns that fill the container */
     grid-template-columns: repeat(4, 1fr); 
     gap: 20px; 
 }
@@ -188,11 +177,11 @@ h1 {
     border-radius: 4px; 
     border: 1px solid var(--border); 
     text-align: center; 
-    transition: 0.3s; 
+    transition: 0.3s; /* Smoothly animates the hover effects below */
 }
 
 .service-card:hover { 
-    transform: translateY(-10px); 
+    transform: translateY(-10px); /* Lifts the card up 10px on hover */
     border-color: var(--vector-red); 
 }
 
@@ -201,88 +190,18 @@ h1 {
     margin-bottom: 15px; 
     display: block; 
 }
-/* Operational Breakdown Section */
-.ops-breakdown {
-    padding: 80px 0;
-    border-top: 1px solid var(--border);
-}
 
-.op-block {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    background: var(--glass);
-    border: 1px solid var(--border);
-    margin-bottom: 30px;
-    padding: 30px;
-    border-radius: 4px;
-    transition: 0.3s ease;
-}
-
-.op-block:hover {
-    border-color: var(--vector-red);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* Image Placeholder on the Left */
-.img-placeholder {
-    min-width: 350px;
-    max-width: 350px;
-    height: 250px;
-    background: var(--navy-dark);
-    border: 1px solid var(--silver);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    color: var(--silver);
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-.img-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    display: block;   
-    transition: transform 0.5s ease; 
-}
-.op-block:hover .img-placeholder img {
-    transform: scale(1.05);
-}
-
-.text-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-start; /* Keeps the button aligned to the left */
-}
-
-.text-content h3 {
-    font-size: 1.5rem;
-    color: var(--vector-red);
-    text-transform: uppercase;
-}
-
-.text-content p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--silver);
-    margin-bottom: 10px;
-}
-
-
-/* 5. Data Table (menu.html) */
+/* ==========================================================================
+   TACTICAL DATA TABLE (SERVICES MENU)
+   ========================================================================== */
 .data-table { 
     width: 100%; 
+    /* separate + border-spacing creates the gap between rows */
     border-collapse: separate; 
     border-spacing: 0 10px; 
     margin: 40px 0; 
 }
 
-/* Consolidated Table Header Rule */
 .data-table thead th { 
     padding: 15px 25px; 
     color: var(--vector-red); 
@@ -295,7 +214,7 @@ h1 {
 }
 
 .data-table thead th:last-child {
-    text-align: right;
+    text-align: right; /* Aligns "Rate" header to the right */
 }
 
 .data-table tbody tr { 
@@ -304,7 +223,7 @@ h1 {
 }
 
 .data-table tbody tr:hover { 
-    transform: translateX(10px); 
+    transform: translateX(10px); /* Slides the row right on hover */
     background: rgba(255,255,255,0.08); 
 }
 
@@ -314,11 +233,13 @@ h1 {
     border-bottom: 1px solid var(--border); 
 }
 
+/* Adds rounded corners to only the start of the row */
 .data-table td:first-child { 
     border-radius: 5px 0 0 5px; 
     border-left: 1px solid var(--border); 
 }
 
+/* Adds rounded corners to only the end of the row */
 .data-table td:last-child { 
     border-radius: 0 5px 5px 0; 
     border-right: 1px solid var(--border); 
@@ -331,14 +252,15 @@ h1 {
     text-align: right; 
 }
 
-/* 6. UI Components & Call to Action */
-
-/* Consolidated CTA Box Rule */
+/* ==========================================================================
+   CALL TO ACTION (CTA) & BUTTONS
+   ========================================================================== */
 .cta-box { 
     text-align: center; 
     padding: 60px 20px; 
     border-top: 1px solid var(--border);
     margin-top: 40px;
+    /* Flexbox used here to center content and control vertical gaps */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -360,7 +282,7 @@ h1 {
     font-weight: 800; 
     text-transform: uppercase; 
     border-radius: 2px; 
-    display: inline-block;
+    display: inline-block; /* Required to allow padding/margins on a links */
 }
 
 .btn-secondary { 
@@ -374,11 +296,13 @@ h1 {
     display: inline-block;
 }
 
-/* 7. Footer */
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 footer { 
     text-align: center; 
     padding: 40px; 
     border-top: 1px solid var(--border); 
-    opacity: 0.5; 
+    opacity: 0.5; /* Fades the footer text slightly */
     font-size: 0.8rem; 
 }
