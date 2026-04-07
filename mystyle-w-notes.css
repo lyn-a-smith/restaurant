@@ -1,307 +1,177 @@
 /* ==========================================================================
-   COMMAND CENTER: CSS VARIABLES (:root)
-   The :root selector targets the highest level of the document (the <html> tag).
-   We use it to store "variables" (starting with --) so we can reuse the same
-   colors and values throughout the entire stylesheet.
+   COMMAND CENTER: VARIABLES
    ========================================================================== */
 :root {
-    --navy-dark: #0d1626;     /* Primary background color */
-    --navy-mid: #1a2b45;      /* Secondary navy for gradients and depth */
-    --vector-red: #e31b23;    /* The "Mission Critical" accent color */
-    --silver: #e1e1e1;        /* Used for secondary text and subtle borders */
-    --text-white: #f8f9fa;    /* High-contrast white for readability */
-    --glass: rgba(255, 255, 255, 0.05); /* 5% white: creates a semi-transparent layer */
-    --border: rgba(255, 255, 255, 0.1); /* 10% white: creates subtle lines between sections */
-    --transition: 0.3s ease;  /* Standard timing for all hover animations */
+    --navy-dark: #0d1626;
+    --navy-mid: #1a2b45;
+    --vector-red: #e31b23;
+    --silver: #e1e1e1;
+    --text-white: #f8f9fa;
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+    --transition: 0.3s ease; /* Consolidated transition variable */
 }
 
 /* ==========================================================================
    1. GLOBAL RESET & FOUNDATIONS
    ========================================================================== */
-
-/* The asterisk (*) is a Universal Selector; it applies these rules to EVERY element */
 * { 
-    margin: 0;                /* Removes default browser spacing around elements */
-    padding: 0;               /* Removes default internal spacing */
-    box-sizing: border-box;   /* Includes padding/border in the element's total width */
-    font-family: 'Inter', sans-serif; /* Sets the global typeface */
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Inter', sans-serif; 
 }
 
-/* Applied to the <html> tag to ensure clicking anchor links scrolls smoothly */
-html {
-    scroll-behavior: smooth;
-}
-
-/* FIXED POSITIONING: Stays in the exact same spot on the screen even when scrolling */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;             /* 30px from the bottom of the browser window */
-    right: 30px;              /* 30px from the right of the browser window */
-    width: 50px;
-    height: 50px;
-    background-color: var(--vector-red);
-    color: white;
-    text-decoration: none;    /* Removes the default underline from the link */
-    display: flex;            /* Turns the button into a flex container to center the text */
-    align-items: center;      /* Vertically centers the text/icon inside the button */
-    justify-content: center; /* Horizontally centers the text/icon inside the button */
-    border-radius: 4px;       /* Gives the button slightly rounded corners */
-    font-size: 1.5rem;
-    font-weight: 900;
-    z-index: 1000;            /* Ensures this button floats ABOVE all other site content */
-    transition: var(--transition); /* Animates the hover effect smoothly */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Adds a 3D shadow for depth */
-}
-
-/* HOVER STATE: Changes the appearance when the mouse is over the button */
-.back-to-top:hover {
-    background-color: #b3141a;
-    transform: translateY(-5px); /* Moves the button 5px UP for a "lifting" effect */
-    box-shadow: 0 8px 20px rgba(227, 27, 35, 0.4);
-}
+html { scroll-behavior: smooth; }
 
 body { 
-    /* radial-gradient: Creates a circular color fade starting from the top */
     background: radial-gradient(circle at top, var(--navy-mid) 0%, var(--navy-dark) 100%);
     color: var(--text-white);
-    min-height: 100vh;        /* Ensures the background covers at least the full screen height */
+    min-height: 100vh;
 }
 
-/* CONTAINER: Controls the "width" of your site's content to keep it readable */
 .container { 
-    max-width: 1200px;        /* Content won't expand past 1200px wide */
-    margin: 0 auto;           /* Centers the container horizontally */
-    padding: 0 20px;          /* Adds a "safety margin" on the left/right for mobile */
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
 }
 
 /* ==========================================================================
-   2. NAVIGATION (NAVBAR)
+   2. SHARED UI COMPONENTS (Buttons & Headers)
    ========================================================================== */
-.navbar { 
-    background: var(--navy-dark); 
-    padding: 20px 0; 
-    position: sticky;         /* The nav "sticks" to the top when you scroll past it */
-    top: 0; 
-    z-index: 100;             /* Stays above regular content, but below the back-to-top button */
-    border-bottom: 1px solid var(--border); 
-    backdrop-filter: blur(10px); /* Blurs content visible "behind" the semi-transparent nav */
+
+/* Base button styles consolidated to avoid repetition */
+.btn-primary, .btn-secondary {
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 2px;
+    display: inline-block;
+    transition: var(--transition);
+    cursor: pointer;
 }
 
-.nav-container { 
-    display: flex;            /* Enables Flexbox layout */
-    justify-content: space-between; /* Pushes the brand to the left and links to the right */
-    align-items: center;      /* Centers items vertically within the nav bar */
+.btn-primary { 
+    background: var(--vector-red); 
+    color: white; 
+    border: none;
 }
 
-.nav-brand { 
-    font-weight: 900; 
-    letter-spacing: 2px;      /* Adds extra space between letters for a tactical feel */
-    color: var(--vector-red); 
-    text-decoration: none; 
-}
+.btn-primary:hover { background-color: #b3141a; }
 
-.nav-links { 
-    display: flex;            /* Aligns the <li> items in a horizontal row */
-    list-style: none;         /* Removes default bullet points */
-    gap: 30px;                /* Creates 30px of space between each link */
-}
-
-.nav-links a { 
-    text-decoration: none; 
+.btn-secondary { 
+    border: 2px solid var(--silver); 
     color: var(--silver); 
-    font-size: 0.8rem; 
-    text-transform: uppercase; /* Automatically capitalizes all link text */
-    font-weight: 700; 
 }
 
-.nav-links a.active { 
-    color: var(--vector-red); /* Styles the link for the page you are currently on */
-}
-
-/* ==========================================================================
-   3. HERO & HEADERS
-   ========================================================================== */
+/* Consolidated headers found on multiple pages */
 .hero, .menu-header { 
     padding: 50px 0 60px; 
     text-align: center; 
 }
 
-.hero-logo { 
-    max-width: 350px; 
-    margin-bottom: 30px; 
-    /* drop-shadow: Shadows the actual pixels of the image, not the square box around it */
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); 
-}
-
 h1 { 
-    font-size: 3.5rem;        /* Sets the main headline to a massive size */
-    line-height: 1;           /* Keeps lines of text tight together */
+    font-size: 3.5rem; 
+    line-height: 1; 
     text-transform: uppercase; 
     font-weight: 900; 
 }
 
-.highlight { 
-    color: var(--vector-red); /* Used via <span class="highlight"> for specific words */
-}
-
-.hero-btns { 
-    display: flex; 
-    justify-content: center;  /* Centers the primary and secondary buttons */
-    gap: 20px; 
-    margin-top: 40px; 
-}
+.highlight { color: var(--vector-red); }
 
 /* ==========================================================================
-   4. LAYOUT SECTIONS (Mission & Pillars)
+   3. NAVIGATION
    ========================================================================== */
-.mission-section { 
-    padding: 40px 0; 
-    background: rgba(0,0,0,0.2); /* Slightly darkens the background of this section */
+.navbar { 
+    background: var(--navy-dark); 
+    padding: 20px 0; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+    border-bottom: 1px solid var(--border); 
+    backdrop-filter: blur(10px);
 }
 
+.nav-container, .nav-links { display: flex; align-items: center; }
+
+.nav-container { justify-content: space-between; }
+
+.nav-brand { 
+    font-weight: 900; 
+    letter-spacing: 2px; 
+    color: var(--vector-red); 
+    text-decoration: none; 
+}
+
+.nav-links { list-style: none; gap: 30px; }
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--silver); 
+    font-size: 0.8rem; 
+    text-transform: uppercase; 
+    font-weight: 700; 
+    transition: var(--transition);
+}
+
+.nav-links a.active, .nav-links a:hover { color: var(--vector-red); }
+
+/* ==========================================================================
+   4. LAYOUT SECTIONS (Grids & Cards)
+   ========================================================================== */
+.mission-grid, .services-grid { display: grid; gap: 20px; }
+
 .mission-grid { 
-    display: grid;            /* Enables CSS Grid layout */
-    /* 1.4fr 1fr: The first column takes 1.4 parts of the space, the second takes 1 part */
     grid-template-columns: 1.4fr 1fr; 
     gap: 80px; 
     align-items: center; 
+    padding: 40px 0;
 }
 
-.mission-text h2 { 
-    color: var(--vector-red); 
-    font-size: 2.5rem; 
-    margin-bottom: 20px; 
-    text-transform: uppercase; 
-}
+.services-grid { grid-template-columns: repeat(4, 1fr); }
 
-.mission-text p {
-    padding-bottom: 8px;      /* Adds space between paragraphs */
+.stat-card, .service-card, .op-block { 
+    background: var(--glass); 
+    border: 1px solid var(--border); 
+    border-radius: 4px;
+    transition: var(--transition);
 }
 
 .stat-card { 
     background: var(--navy-dark); 
     padding: 40px; 
-    border-left: 5px solid var(--vector-red); /* Creates the "Marine-style" red vertical accent */
+    border-left: 5px solid var(--vector-red); 
     margin-bottom: 20px; 
 }
 
-.stat-card h3 { 
-    font-size: 3rem; 
-    color: var(--vector-red); 
-}
-
-/* PILLARS SECTION: Uses a 4-column grid for the training disciplines */
-.pillars-section { 
-    padding: 60px 0; 
-}
-
-.section-title { 
-    text-align: center; 
-    margin-bottom: 50px; 
-    text-transform: uppercase; 
-    font-size: 2rem; 
-}
-
-.services-grid { 
-    display: grid; 
-    /* repeat(4, 1fr): Automatically creates 4 equal columns */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 20px; 
-}
-
 .service-card { 
-    background: var(--glass); 
     padding: 40px 20px; 
-    border-radius: 4px; 
-    border: 1px solid var(--border); 
     text-align: center; 
-    transition: 0.3s; 
 }
 
 .service-card:hover { 
-    transform: translateY(-10px); /* Lifts the card 10px when the user hovers */
+    transform: translateY(-10px); 
     border-color: var(--vector-red); 
 }
 
-.service-card .icon { 
-    font-size: 2.5rem; 
-    margin-bottom: 15px; 
-    display: block;           /* Forces the icon to take up its own line */
-}
-
 /* ==========================================================================
-   OPERATIONAL BREAKDOWN (Horizontal Blocks)
+   5. OPERATIONAL BREAKDOWN & DATA TABLES
    ========================================================================== */
-.ops-breakdown {
-    padding: 80px 0;
-    border-top: 1px solid var(--border);
-}
-
 .op-block {
-    display: flex;            /* Horizontal layout: Image on left, text on right */
-    align-items: center; 
-    gap: 40px; 
-    background: var(--glass); 
-    border: 1px solid var(--border); 
-    margin-bottom: 30px; 
-    padding: 30px; 
-    border-radius: 4px; 
-    transition: 0.3s ease; 
-}
-
-.op-block:hover {
-    border-color: var(--vector-red);
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.img-placeholder {
-    min-width: 350px;         /* Ensures the image area never shrinks below 350px */
-    max-width: 350px;
-    height: 250px;
-    background: var(--navy-dark);
-    border: 1px solid var(--silver);
     display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;         /* Hides any part of the image that scales outside the box */
-    color: var(--silver);
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    gap: 40px;
+    margin-bottom: 30px;
+    padding: 30px;
 }
 
-.img-placeholder img {
-    width: 100%;
-    height: 100%;
-    /* object-fit: cover ensures the image fills the 350x250 area without stretching */
-    object-fit: cover; 
-    display: block;   
-    transition: transform 0.5s ease; 
-}
+.op-block:hover { border-color: var(--vector-red); background: rgba(255, 255, 255, 0.08); }
 
-/* SCALE: Zooms into the image slightly when the parent (op-block) is hovered */
-.op-block:hover .img-placeholder img {
-    transform: scale(1.05);
-}
-
-.text-content {
-    flex: 1;                  /* Tells the text to take up all remaining space in the row */
-    display: flex;
-    flex-direction: column;   /* Stacks title, p, and button vertically */
-    gap: 15px;
-    align-items: flex-start;  /* Ensures the button doesn't stretch to full width */
-}
-
-/* ==========================================================================
-   5. DATA TABLE (SERVICES MENU)
-   ========================================================================== */
 .data-table { 
     width: 100%; 
-    /* border-collapse: separate allows us to use border-spacing between rows */
     border-collapse: separate; 
-    border-spacing: 0 10px;   /* 0px horizontal spacing, 10px vertical between rows */
+    border-spacing: 0 10px; 
     margin: 40px 0; 
 }
 
@@ -312,101 +182,92 @@ h1 {
     text-align: left; 
     font-size: 1.1rem;          
     font-weight: 800;           
-    letter-spacing: 1.5px;      
     border-bottom: 2px solid var(--vector-red);
 }
 
-/* Pseudo-selector targeting only the final cell in the header row */
-.data-table thead th:last-child {
-    text-align: right;
-}
-
-.data-table tbody tr { 
-    background: var(--glass); 
-    transition: 0.3s; 
-}
-
-/* translateX: Slides the entire table row to the right on hover */
-.data-table tbody tr:hover { 
-    transform: translateX(10px); 
-    background: rgba(255,255,255,0.08); 
-}
-
-.data-table td { 
-    padding: 20px 25px; 
-    border-top: 1px solid var(--border); 
-    border-bottom: 1px solid var(--border); 
-}
-
-/* Targeting specific cells to add rounded corners only to the edges of the row */
-.data-table td:first-child { 
-    border-radius: 5px 0 0 5px; /* Top-Left, Top-Right, Bottom-Right, Bottom-Left */
-    border-left: 1px solid var(--border); 
-}
-
-.data-table td:last-child { 
-    border-radius: 0 5px 5px 0; 
-    border-right: 1px solid var(--border); 
-}
-
-.price { 
-    font-weight: 900; 
-    color: var(--vector-red); 
-    font-size: 1.3rem; 
-    text-align: right; 
-}
+.data-table tbody tr { background: var(--glass); transition: var(--transition); }
+.data-table tbody tr:hover { transform: translateX(10px); }
 
 /* ==========================================================================
-   6. UI COMPONENTS (Buttons & CTA)
+   6. FORMS & INPUTS
    ========================================================================== */
-.cta-box { 
-    text-align: center; 
-    padding: 60px 20px; 
-    border-top: 1px solid var(--border);
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;   /* Stacks CTA text and button vertically */
-    align-items: center; 
-    gap: 25px; 
+
+/* Shared styles for all input types to reduce code volume */
+input, select, textarea {
+    background: var(--navy-dark);
+    border: 1px solid var(--border);
+    padding: 12px 15px;
+    color: var(--text-white);
+    border-radius: 2px;
+    font-size: 1rem;
+    width: 100%;
+    transition: var(--transition);
 }
 
-.cta-box p {
-    font-size: 1.1rem;
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--vector-red);
+    box-shadow: 0 0 10px rgba(227, 27, 35, 0.2);
+}
+
+.form-group legend {
+    color: var(--vector-red);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--vector-red);
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.field { margin: 20px 0; display: flex; flex-direction: column; }
+.input-row { display: flex; gap: 20px; }
+
+/* ==========================================================================
+   7. CALCULATOR LOGIC
+   ========================================================================== */
+.services-selection { counter-reset: total 0; }
+
+/* Pricing logic increments */
+.price-125:checked { counter-increment: total 125; }
+.price-95:checked  { counter-increment: total 95; }
+.price-85:checked  { counter-increment: total 85; }
+.price-150:checked { counter-increment: total 150; }
+.price-75:checked  { counter-increment: total 75; }
+
+.total-amount::before {
+    content: "$" counter(total);
+    font-size: 1.5rem;
+    font-weight: 900;
     color: var(--silver);
-    max-width: 500px; 
-    line-height: 1.4;
-}
-
-.btn-primary { 
-    background: var(--vector-red); 
-    color: white; 
-    padding: 15px 30px; 
-    text-decoration: none; 
-    font-weight: 800; 
-    text-transform: uppercase; 
-    border-radius: 2px; 
-    /* inline-block: Allows the link to respect padding and margins like a button box */
-    display: inline-block;
-}
-
-.btn-secondary { 
-    border: 2px solid var(--silver); 
-    color: var(--silver); 
-    padding: 13px 28px; 
-    text-decoration: none; 
-    font-weight: 800; 
-    text-transform: uppercase; 
-    border-radius: 2px; 
-    display: inline-block;
 }
 
 /* ==========================================================================
-   7. FOOTER
+   8. UTILITIES & FOOTER
    ========================================================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--vector-red);
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.back-to-top:hover { transform: translateY(-5px); }
+
 footer { 
     text-align: center; 
     padding: 40px; 
     border-top: 1px solid var(--border); 
-    opacity: 0.5;             /* Makes the footer look "faded" and secondary */
+    opacity: 0.5; 
     font-size: 0.8rem; 
 }

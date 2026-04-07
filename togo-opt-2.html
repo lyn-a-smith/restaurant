@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services & Pricing | Vector Baseball</title>
-    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="mystyle-opt-2.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="top">
 
     <nav class="navbar">
         <div class="container nav-container">
@@ -15,7 +15,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Services</a></li>
-                <li><a href="togo.html" class="active">Register</a></li>
+                <li><a href="togo-opt-2.html" class="active">Register</a></li>
             </ul>
         </div>
     </nav>
@@ -44,23 +44,49 @@
 
                 <fieldset class="form-group">
                     <legend>Mission Parameters</legend>
-                    <div class="input-row">
-                        <div class="field">
-                            <label for="service">Select Discipline</label>
-                            <select id="service" name="service_type" required>
-                                <option value="" disabled selected>Select Service...</option>
-                                <option value="pitching">🎯 Pitching: Bio-Mechanical Recon</option>
-                                <option value="pitching">🎯 Pitching: Arsenal Calibration</option>
-                                <option value="batting">⚡ Batting: Vector Blast Profile</option>
-                                <option value="analytics">📊 Analytics: The "Intel" Brief</option>
-                                <option value="strength">🛡️ Strength: Tactical Athlete S&C</option>
-                            </select>
+                    <div class="services-selection">
+                        <div class="check-item">
+                            <input type="checkbox" id="pitch" class="price-125">
+                            <label for="pitch">🎯 Pitching: Bio-Mechanical Recon <span>$125</span></label>
                         </div>
+
+                        <div class="check-item">
+                            <input type="checkbox" id="pitch" class="price-95">
+                            <label for="pitch">🎯 Pitching: Arsenal Calibration <span>$95</span></label>
+                        </div>
+                        
+                        <div class="check-item">
+                            <input type="checkbox" id="bat" class="price-85">
+                            <label for="bat">⚡ Batting: Vector Blast Profile <span>$85</span></label>
+                        </div>
+
+                        <div class="check-item">
+                            <input type="checkbox" id="analytics" class="price-150">
+                            <label for="analytics">📊 Analytics: The "Intel" Brief <span>$150</span></label>
+                        </div>
+
+                        <div class="check-item">
+                            <input type="checkbox" id="S&C" class="price-75">
+                            <label for="stregnth">🛡️ Strength: Tactical Athlete S&C <span>$75</span></label>
+                        </div>
+
+                        <div class="training-goals">
+                            <label for="goals">Training Goals:</label>
+                            <textarea id="goals" name="goals" rows="5" placeholder="Give a brief description of your training goals...">
+                            </textarea> 
+                        </div>
+
                         <div class="field">
                             <label for="start-date">Deployment Date (Service Start)</label>
                             <input type="date" id="start-date" name="service_start" required>
                         </div>
+
+                        <div class="total-display">
+                            <strong>ESTIMATED MISSION COST:</strong>
+                            <span class="total-amount"></span>
+                        </div>
                     </div>
+                    
                 </fieldset>
 
                 <fieldset class="form-group">
@@ -87,6 +113,13 @@
                 </div>
             </form>
         </section>
+
+        <footer>
+            <p>Vector Baseball Training & Analytics | Marine Owned & Operated | DFW, TX</p>
+        </footer>
+
+        <a href="#top" class="back-to-top" title="Back to Top">↑</a>
+
     </main>
 </body>
 </html>
