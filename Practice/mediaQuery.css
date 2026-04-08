@@ -1,0 +1,41 @@
+/* desktop view*/
+header {
+    background-color: aqua;
+    width: 100%;
+    height: 30vh;
+}
+
+div {
+    background-color: lightcoral;
+    width: 80%;
+    height: 20vh;
+    margin: 50px 0;
+}
+
+p {
+    width: 60%;
+    background-color: lightgray;
+}
+
+/*tablet view*/
+@media ((min-width:601px) and (max-width:768px)) {
+    header {
+        background-color: beige;
+    }
+    div {
+        width: 90%;
+    }
+}
+
+/*phone view*/
+@media (max-width:600px){
+    header {
+        background-color: lightcyan;
+    }
+    div{
+        width: 100%
+    }
+    p {
+        display: none;
+    }   
+}
